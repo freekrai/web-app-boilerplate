@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html lang="en" manifest="web.appcache"> 
+<head> 
+<meta charset="utf-8" />
+<title>My App</title>
+
+<!-- Meta viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+<!-- CSS styles -->
+<link rel="stylesheet" href="styles.css" />
+
+<!-- Main JavaScript -->
+<script src="main.js"></script>
+
+<!-- iOS full screen mode -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<!-- iOS Status Bar Style (default, black, black-translucent) -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<!-- iOS prevent tel number format detection -->
+<meta name="format-detection" content="telephone=no" />
+
+<!-- iOS app startup images -->
+<script type="text/javascript"> 
+(function () {
+	var filename;
+	if (navigator.platform === 'iPad') {
+		filename = window.orientation !== 90 || window.orientation === -90 ? 'splash-1024x748.png' : 'splash-768x1004.png';
+	} else {
+		filename = window.devicePixelRatio === 2 ? 'splash-640x920.png' : 'splash-320x460.png';
+	}
+	document.write('<link rel="apple-touch-startup-image" href="' + filename + '"/>' );
+})();
+</script>
+
+<!-- iOS home screen icons -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="iOS-114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="iOS-72.png" />
+<link rel="apple-touch-icon-precomposed" href="iOS-57.png" />
+<link rel="icon" href="iOS-57.png" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href="" />
+
+<!-- Info -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<!-- Humans.txt -->
+<link type="text/plain" rel="author" href="humans.txt" />
+
+<!-- Async Google Analytics -->
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXX-X']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script');
+ga.src = ('https:' == document.location.protocol ?
+    'https://ssl' : 'http://www') +
+    '.google-analytics.com/ga.js';
+ga.setAttribute('async', 'true');
+document.documentElement.firstChild.appendChild(ga);
+})();
+</script>
+
+</head> 
+
+<body> 
+
+</body>
+</html> 
