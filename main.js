@@ -28,14 +28,8 @@ var myApp = (function () {
 			email:				'Email address'
 		},
 
-		//error & confirmation messages
-		MESSAGE: {
-			storageInvalid:		'Your device does not support localStorage, sorry',
-			quotaInvalid:		'You have reached the maximum storage limit for this app'
-		},
-
 		//feature detection
-		TEST: {
+		FEATURE: {
 			hasTouch:			'ontouchstart' in window || 'createTouch' in document,
 			hasOverflowScroll:	'webkitOverflowScrolling' in document.documentElement.style,
 			hasLocalStorage:	'localStorage' in window && localStorage !== null,

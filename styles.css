@@ -33,20 +33,6 @@ body {
   font-family: "HelveticaNeue", Helvetica, Arial, Verdana, sans-serif;
 }
 
-.hide {
-  position: absolute;
-  top: -200em;
-  left: -2000em;
-}
-
-[aria-hidden="true"] {
-  display: none;
-}
-
-[aria-hidden="false"] {
-  display: block;
-}
-
 /* High dpi devices -------- */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), 
 only screen and (min--moz-device-pixel-ratio: 1.5), 
