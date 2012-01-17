@@ -38,7 +38,7 @@ var myApp = (function () {
 		FEATURE: {
 			hasTouch:			'ontouchstart' in window || 'createTouch' in document,
 			hasOverflowScroll:	'webkitOverflowScrolling' in document.documentElement.style,
-			hasLocalStorage:	'localStorage' in window && window['localStorage'] !== null,
+			hasLocalStorage:	'localStorage' in window && localStorage !== null,
 			isStandalone:		'standalone' in navigator && navigator.standalone
 		}
 	};
