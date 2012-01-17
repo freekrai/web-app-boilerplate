@@ -27,7 +27,7 @@ var myApp = (function () {
 			url:				'http://',
 			email:				'Email address'
 		},
-		
+
 		//application messaging
 		MESSAGE: {
 			storageSupported:	'Your device does not support the type of storage required by this application',
