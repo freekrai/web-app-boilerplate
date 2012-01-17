@@ -34,7 +34,7 @@ var myApp = (function () {
 			hasOverflowScroll:	'webkitOverflowScrolling' in document.documentElement.style,
 			hasLocalStorage:	'localStorage' in window && localStorage !== null,
 			isStandalone:		'standalone' in navigator && navigator.standalone
-		},
+		}
 	};
 
 	return {
