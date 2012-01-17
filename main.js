@@ -73,9 +73,43 @@ var myApp = (function () {
 			localStorage.clear();
 		},
 
-		init: function () {
+		//encodes special characters
+		encodeString: function (str) {
+			return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/\//g, '&#x2F;');
+		},
 
-			//code here
+		//decodes special characters
+		decodeString: function (str) {
+			return str.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#x27;/g, '\'').replace(/&#x2F;/g, '/');
+		},
+
+		//pass in a GET parameter name and return its value from url
+		getParameterFromUrl: function (param) {
+			var name = param.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]'),
+				results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+			if (results === null) {
+				return null;
+			} else {
+				return decodeURIComponent(results[1].replace(/\+/g, ' '));
+			}
+		},
+
+        //shows an element
+        show: function (el) {
+            var element = document.querySelector(el);
+            element.setAttribute('aria-hidden', 'false');
+            element.style.display = 'block';
+        },
+
+        //hides an element
+        hide: function (el) {
+            var element = document.querySelector(el);
+            element.setAttribute('aria-hidden', 'true');
+            element.style.display = 'none';
+        },
+        
+		//initialise app
+		init: function () {
 
 		}
 	};
