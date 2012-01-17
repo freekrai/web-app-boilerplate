@@ -27,19 +27,53 @@ var myApp = (function () {
 			url:				'http://',
 			email:				'Email address'
 		},
+		
+		//application messaging
+		MESSAGE: {
+			storageSupported:	'Your device does not support the type of storage required by this application',
+			quotaExceeded:		'The application has reached the maximum storage limit'
+		},
 
 		//feature detection
 		FEATURE: {
 			hasTouch:			'ontouchstart' in window || 'createTouch' in document,
 			hasOverflowScroll:	'webkitOverflowScrolling' in document.documentElement.style,
-			hasLocalStorage:	'localStorage' in window && localStorage !== null,
+			hasLocalStorage:	'localStorage' in window && window['localStorage'] !== null,
 			isStandalone:		'standalone' in navigator && navigator.standalone
 		}
 	};
 
 	return {
 
-		loaded: function () {
+		//add an item to storage
+		addToStorage: function (key, value) {
+			try {
+				localStorage.setItem(key, value);
+				return true;
+			} catch (e) {
+				if (e === 'QUOTA_EXCEEDED_ERR') {
+					alert(config.MESSAGE.quotaExceeded);
+				}
+				return false;
+			}
+		},
+
+		//get an item from storage
+		getFromStorage: function (key) {
+			return localStorage.getItem(key);
+		},
+
+		//remove an item from storage
+		removeFromStorage: function (key) {
+			localStorage.removeItem(key);
+		},
+
+		//clear storage
+		clearStorage: function () {
+			localStorage.clear();
+		},
+
+		init: function () {
 
 			//code here
 
@@ -47,4 +81,4 @@ var myApp = (function () {
 	};
 }());
 
-window.addEventListener("DOMContentLoaded", myApp.loaded, true);
+window.addEventListener("DOMContentLoaded", myApp.init, true);
