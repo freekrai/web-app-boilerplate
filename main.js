@@ -94,19 +94,19 @@ var myApp = (function () {
 			}
 		},
 
-        //shows an element
-        show: function (el) {
-            var element = document.querySelector(el);
-            element.setAttribute('aria-hidden', 'false');
-            element.style.display = 'block';
-        },
+		//shows an element
+		show: function (el) {
+			var element = document.querySelector(el);
+			element.setAttribute('aria-hidden', 'false');
+			element.style.display = 'block';
+		},
 
-        //hides an element
-        hide: function (el) {
-            var element = document.querySelector(el);
-            element.setAttribute('aria-hidden', 'true');
-            element.style.display = 'none';
-        },
+		//hides an element
+		hide: function (el) {
+			var element = document.querySelector(el);
+			element.setAttribute('aria-hidden', 'true');
+			element.style.display = 'none';
+		},
         
 		//initialise app
 		init: function () {
