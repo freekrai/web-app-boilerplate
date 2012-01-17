@@ -1,12 +1,12 @@
 /*
- * 
+ *
  * Find more about this boilerplate by visiting
  * http://miniapps.co.uk/
  *
  * Copyright (c) 2012 Alex Gibson, http://miniapps.co.uk/
- * Released under MIT license 
+ * Released under MIT license
  * http://miniapps.co.uk/license/
- * 
+ *
  */
 
 var myApp = (function () {
