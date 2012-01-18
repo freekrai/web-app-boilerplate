@@ -39,6 +39,16 @@ var myApp = (function () {
 			hasTouch:			'ontouchstart' in window || 'createTouch' in document,
 			hasOverflowScroll:	'webkitOverflowScrolling' in document.documentElement.style,
 			hasLocalStorage:	'localStorage' in window && localStorage !== null,
+			hasSessionStorage:	'sessionStorage' in window && sessionStorage !== null,
+			hasOrientation:		'onorientationchange' in window,
+			hasGeolocation:		!!navigator.geolocation,
+			hasCanvas:			!!document.createElement('canvas').getContext,
+			hasHistory:			!!(window.history && window.history.pushState),
+			hasAppCache:		!!window.applicationCache,
+			hasIndexedDB:		!!window.indexedDB,
+			hasWebSockets:		!!window.WebSocket,
+			hasWebWorkers:		!!window.Worker,
+			hasEventSource:		typeof EventSource !== 'undefined',
 			isStandalone:		'standalone' in navigator && navigator.standalone
 		}
 	};
