@@ -41,20 +41,80 @@ var myApp = (function () {
 			hasLocalStorage:	'localStorage' in window && localStorage !== null,
 			hasSessionStorage:	'sessionStorage' in window && sessionStorage !== null,
 			hasOrientation:		'onorientationchange' in window,
-			hasGeolocation:		!!navigator.geolocation,
-			hasCanvas:			!!document.createElement('canvas').getContext,
-			hasHistory:			!!(window.history && window.history.pushState),
-			hasAppCache:		!!window.applicationCache,
-			hasIndexedDB:		!!window.indexedDB,
-			hasWebSockets:		!!window.WebSocket,
-			hasWebWorkers:		!!window.Worker,
-			hasEventSource:		typeof EventSource !== 'undefined',
 			isStandalone:		'standalone' in navigator && navigator.standalone
 		}
 	};
 
 	return {
-        
+
+		//add an item to storage
+		addToStorage: function (key, value) {
+			try {
+				localStorage.setItem(key, value);
+				return true;
+			} catch (e) {
+				if (e === 'QUOTA_EXCEEDED_ERR') {
+					alert(config.MESSAGE.quotaExceeded);
+				}
+				return false;
+			}
+		},
+
+		//get an item from storage
+		getFromStorage: function (key) {
+			return localStorage.getItem(key);
+		},
+
+		//remove an item from storage
+		removeFromStorage: function (key) {
+			localStorage.removeItem(key);
+		},
+
+		//clear storage
+		clearStorage: function () {
+			localStorage.clear();
+		},
+
+		//encodes special characters
+		encodeString: function (str) {
+			return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/\//g, '&#x2F;');
+		},
+
+		//decodes special characters
+		decodeString: function (str) {
+			return str.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#x27;/g, '\'').replace(/&#x2F;/g, '/');
+		},
+
+		//pass in a GET parameter name and return its value from url
+		getParameterFromUrl: function (param) {
+			var name = param.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]'),
+				results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+			if (results === null) {
+				return null;
+			} else {
+				return decodeURIComponent(results[1].replace(/\+/g, ' '));
+			}
+		},
+
+		//enable active pseudo styles in mobile webkit. Only required if not already using touch events
+		enableActivePseudoStyles: function () {
+			document.addEventListener("touchstart", function () {}, false);
+		},
+
+		//shows an element
+		show: function (el) {
+			var element = document.querySelector(el);
+			element.setAttribute('aria-hidden', 'false');
+			element.style.display = 'block';
+		},
+
+		//hides an element
+		hide: function (el) {
+			var element = document.querySelector(el);
+			element.setAttribute('aria-hidden', 'true');
+			element.style.display = 'none';
+		},
+
 		//initialise app
 		init: function () {
 
