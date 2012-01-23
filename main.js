@@ -41,7 +41,8 @@ var myApp = (function () {
 			hasLocalStorage:	'localStorage' in window && localStorage !== null,
 			hasSessionStorage:	'sessionStorage' in window && sessionStorage !== null,
 			hasOrientation:		'onorientationchange' in window,
-			isStandalone:		'standalone' in navigator && navigator.standalone
+			isStandalone:		'standalone' in navigator && navigator.standalone,
+			isOnline:			'onLine' in navigator && navigator.onLine
 		}
 	};
 
@@ -53,7 +54,7 @@ var myApp = (function () {
 				localStorage.setItem(key, value);
 				return true;
 			} catch (e) {
-				if (e === 'QUOTA_EXCEEDED_ERR') {
+				if (e === QUOTA_EXCEEDED_ERR) {
 					alert(config.MESSAGE.quotaExceeded);
 				}
 				return false;
