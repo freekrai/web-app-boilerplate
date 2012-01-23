@@ -48,6 +48,44 @@ var myApp = (function () {
 
 	return {
 
+		//set meta viewport
+		setViewport: function (params) {
+			var head = document.getElementsByTagName('head')[0], viewport, options, i = 0;
+			options = {
+				width: 'device-width',
+				initScale: 1,
+				minScale: 1,
+				maxScale: 1,
+				userScale: 'no'
+			};
+			// User defined options
+			if (typeof params === 'object') {
+				for (i in params) {
+					if (params.hasOwnProperty(i)) {
+						options[i] = params[i];
+					}
+				}
+			}
+			viewport = document.createElement('meta');
+			viewport.setAttribute('name', 'viewport');
+			viewport.setAttribute('content', 'width=' + options.width + ', initial-scale=' + options.initScale + ', minimum-scale=' + options.minScale + ', maximum-scale=' + options.maxScale + ', user-scalable=' + options.userScale);
+			head.appendChild(viewport);
+		},
+
+		//set apple startup image
+		setStartupImage: function () {
+			var head = document.getElementsByTagName('head')[0], filename, link;
+			if (navigator.platform === 'iPad') {
+				filename = window.orientation !== 90 || window.orientation === -90 ? 'splash-1024x748.png' : 'splash-768x1004.png';
+			} else {
+				filename = window.devicePixelRatio === 2 ? 'splash-640x920.png' : 'splash-320x460.png';
+			}
+			link = document.createElement('link');
+			link.setAttribute('rel', 'apple-touch-startup-image');
+			link.setAttribute('href', filename);
+			head.appendChild(link);
+		},
+
 		//add an item to storage
 		addToStorage: function (key, value) {
 			try {
@@ -104,21 +142,22 @@ var myApp = (function () {
 
 		//shows an element
 		show: function (el) {
-			var element = document.querySelector(el);
+			var element = typeof el === 'object' ? el : document.querySelector(el);
 			element.setAttribute('aria-hidden', 'false');
 			element.style.display = 'block';
 		},
 
 		//hides an element
 		hide: function (el) {
-			var element = document.querySelector(el);
+			var element = typeof el === 'object' ? el : document.querySelector(el);
 			element.setAttribute('aria-hidden', 'true');
 			element.style.display = 'none';
 		},
 
 		//initialise app
 		init: function () {
-
+			myApp.setViewport();
+			myApp.setStartupImage();
 		}
 	};
 }());

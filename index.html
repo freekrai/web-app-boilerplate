@@ -22,19 +22,6 @@
 <!-- iOS prevent tel number format detection -->
 <meta name="format-detection" content="telephone=no" />
 
-<!-- iOS app startup images -->
-<script type="text/javascript"> 
-(function () {
-	var filename;
-	if (navigator.platform === 'iPad') {
-		filename = window.orientation !== 90 || window.orientation === -90 ? 'splash-1024x748.png' : 'splash-768x1004.png';
-	} else {
-		filename = window.devicePixelRatio === 2 ? 'splash-640x920.png' : 'splash-320x460.png';
-	}
-	document.write('<link rel="apple-touch-startup-image" href="' + filename + '"/>' );
-})();
-</script>
-
 <!-- iOS home screen icons -->
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="iOS-114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="iOS-72.png" />
