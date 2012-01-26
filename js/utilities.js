@@ -1,3 +1,27 @@
+//set meta viewport
+function setViewport(params) {
+	var head = document.getElementsByTagName('head')[0], viewport, options, i = 0;
+	options = {
+		width: 'device-width',
+		initScale: 1,
+		minScale: 1,
+		maxScale: 1,
+		userScale: 'no'
+	};
+	// User defined options
+	if (typeof params === 'object') {
+		for (i in params) {
+			if (params.hasOwnProperty(i)) {
+				options[i] = params[i];
+			}
+		}
+	}
+	viewport = document.createElement('meta');
+	viewport.setAttribute('name', 'viewport');
+	viewport.setAttribute('content', 'width=' + options.width + ', initial-scale=' + options.initScale + ', minimum-scale=' + options.minScale + ', maximum-scale=' + options.maxScale + ', user-scalable=' + options.userScale);
+	head.appendChild(viewport);
+}
+
 //add an item to storage
 function addToStorage(key, value) {
 	try {
