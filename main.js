@@ -48,26 +48,27 @@ var myApp = (function () {
 		}
 	};
 
-	//set apple startup image
-	function setStartupImage() {
-		var head = document.getElementsByTagName('head')[0], filename, link;
-		if (navigator.platform === 'iPad') {
-			filename = window.orientation !== 90 || window.orientation === -90 ? 'splash-1024x748.png' : 'splash-768x1004.png';
-		} else {
-			filename = window.devicePixelRatio === 2 ? 'splash-640x920.png' : 'splash-320x460.png';
-		}
-		link = document.createElement('link');
-		link.setAttribute('rel', 'apple-touch-startup-image');
-		link.setAttribute('href', filename);
-		head.appendChild(link);
-	}
-
 	return {
 
 		//public
+		
+		//set apple startup image
+		setStartupImage: function () {
+			var head = document.getElementsByTagName('head')[0], filename, link;
+			if (navigator.platform === 'iPad') {
+				filename = window.orientation !== 90 || window.orientation === -90 ? 'splash-1024x748.png' : 'splash-768x1004.png';
+			} else {
+				filename = window.devicePixelRatio === 2 ? 'splash-640x920.png' : 'splash-320x460.png';
+			}
+			link = document.createElement('link');
+			link.setAttribute('rel', 'apple-touch-startup-image');
+			link.setAttribute('href', filename);
+			head.appendChild(link);
+		},
 
+		//init app
 		init: function () {
-			setStartupImage();
+			myApp.setStartupImage();
 		}
 	};
 }());

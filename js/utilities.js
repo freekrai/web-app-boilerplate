@@ -1,5 +1,19 @@
+//set apple startup image
+setStartupImage: function () {
+	var head = document.getElementsByTagName('head')[0], filename, link;
+	if (navigator.platform === 'iPad') {
+		filename = window.orientation !== 90 || window.orientation === -90 ? 'splash-1024x748.png' : 'splash-768x1004.png';
+	} else {
+		filename = window.devicePixelRatio === 2 ? 'splash-640x920.png' : 'splash-320x460.png';
+	}
+	link = document.createElement('link');
+	link.setAttribute('rel', 'apple-touch-startup-image');
+	link.setAttribute('href', filename);
+	head.appendChild(link);
+},
+
 //set meta viewport
-function setViewport(params) {
+setViewport: function (params) {
 	var head = document.getElementsByTagName('head')[0], viewport, options, i = 0;
 	options = {
 		width: 'device-width',
@@ -20,10 +34,10 @@ function setViewport(params) {
 	viewport.setAttribute('name', 'viewport');
 	viewport.setAttribute('content', 'width=' + options.width + ', initial-scale=' + options.initScale + ', minimum-scale=' + options.minScale + ', maximum-scale=' + options.maxScale + ', user-scalable=' + options.userScale);
 	head.appendChild(viewport);
-}
+},
 
 //add an item to storage
-function addToStorage(key, value) {
+addToStorage: function (key, value) {
 	try {
 		localStorage.setItem(key, value);
 		return true;
@@ -33,35 +47,35 @@ function addToStorage(key, value) {
 		}
 		return false;
 	}
-}
+},
 
 //get an item from storage
-function getFromStorage(key) {
+getFromStorage: function (key) {
 	return localStorage.getItem(key);
-}
+},
 
 //remove an item from storage
-function removeFromStorage(key) {
+removeFromStorage: function (key) {
 	localStorage.removeItem(key);
-}
+},
 
 //clear storage
-function clearStorage() {
+clearStorage: function () {
 	localStorage.clear();
-}
+},
 
 //encodes special characters
-function encodeString(str) {
+encodeString: function (str) {
 	return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/\//g, '&#x2F;');
-}
+},
 
 //decodes special characters
-function decodeString(str) {
+decodeString: function (str) {
 	return str.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#x27;/g, '\'').replace(/&#x2F;/g, '/');
-}
+},
 
 //pass in a GET parameter name and return its value from url
-function getParameterFromUrl(param) {
+getParameterFromUrl: function (param) {
 	var name = param.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]'),
 		results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
 	if (results === null) {
@@ -69,23 +83,30 @@ function getParameterFromUrl(param) {
 	} else {
 		return decodeURIComponent(results[1].replace(/\+/g, ' '));
 	}
-}
+},
 
 //enable active pseudo styles in mobile webkit. Only required if not already using touch events
-function enableActivePseudoStyles() {
+enableActivePseudoStyles: function () {
 	document.addEventListener("touchstart", function () {}, false);
-}
+},
 
 //shows an element
-function show(el) {
+show: function (el) {
 	var element = typeof el === 'object' ? el : document.querySelector(el);
 	element.setAttribute('aria-hidden', 'false');
 	element.style.display = 'block';
-}
+},
 
 //hides an element
-function hide(el) {
+hide: function (el) {
 	var element = typeof el === 'object' ? el : document.querySelector(el);
 	element.setAttribute('aria-hidden', 'true');
 	element.style.display = 'none';
+},
+
+//return text content from html
+stripHTML: function (html) {
+	var tmp = document.createElement('div');
+	tmp.innerHTML = html;
+	return tmp.textContent || tmp.innerText;
 }
