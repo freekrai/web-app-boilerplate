@@ -15,7 +15,6 @@ var myApp = (function () {
 
 	var config = {
 
-		//app info
 		APP: {
 			name:				'My App',
 			version:			'1.0',
@@ -23,20 +22,17 @@ var myApp = (function () {
 			url:				'http://'
 		},
 
-		//developer info
 		DEVELOPER: {
 			name:				'Your name',
 			url:				'http://',
 			email:				'Email address'
 		},
 
-		//application messaging
 		MESSAGE: {
 			storageSupported:	'Your device does not support the type of storage required by this application',
 			quotaExceeded:		'The application has reached the maximum storage limit'
 		},
 
-		//feature detection
 		FEATURE: {
 			hasTouch:			'ontouchstart' in window || 'createTouch' in document,
 			hasOverflowScroll:	'webkitOverflowScrolling' in document.documentElement.style,
