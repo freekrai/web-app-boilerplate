@@ -8,10 +8,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
 <!-- CSS styles -->
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="css/styles.css" />
 
-<!-- JavaScript -->
-<script src="main.js"></script>
+<!-- JavaScript libs -->
+<script src="js/utils/tap.js"></script>
+<script src="js/libs/zepto/zepto-min.js"></script>
+<script src="js/libs/underscore/underscore-min.js"></script>
+<script src="js/libs/backbone/backbone-min.js"></script>
+<script src="js/utils/backbone.localStorage-min.js"></script>
+<script src="js/main.js"></script>
 
 <!-- iOS full screen mode -->
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -23,10 +28,10 @@
 <meta name="format-detection" content="telephone=no" />
 
 <!-- iOS home screen icons -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="iOS-114.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="iOS-72.png" />
-<link rel="apple-touch-icon-precomposed" href="iOS-57.png" />
-<link rel="icon" href="iOS-57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/iOS-114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/iOS-72.png" />
+<link rel="apple-touch-icon-precomposed" href="images/iOS-57.png" />
+<link rel="icon" href="images/iOS-57.png" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href="" />
@@ -38,7 +43,7 @@
 <!-- Humans.txt -->
 <link type="text/plain" rel="author" href="humans.txt" />
 
-<!-- Async Google Analytics -->
+<!-- Async Google Analytics
 <script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-XXXXXXX-X']);
@@ -52,11 +57,18 @@ ga.src = ('https:' == document.location.protocol ?
 ga.setAttribute('async', 'true');
 document.documentElement.firstChild.appendChild(ga);
 })();
-</script>
+</script>-->
 
 </head>
 
 <body>
+
+<div id="app-view"></div>
+
+<!-- Default template -->
+<script type="text/template" id="default-template">
+	<h1>Hello World</h1>
+</script>
 
 </body>
 </html> 

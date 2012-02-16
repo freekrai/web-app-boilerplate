@@ -1,7 +1,7 @@
 web-app-boilerplate
 =======================================
 
-A minimal web application boilerplate for producing single-page JavaScript apps. The aim is to provide a clean starting point for new projects, aimed at modern desktop browsers and mobile/tablet devices.
+A minimal web app boilerplate for producing single-page JavaScript apps using Backbone.js
 
 	
 MIT License

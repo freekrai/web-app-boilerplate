@@ -1,11 +1,15 @@
-/* TEAM */
+/* MAIN */
 
-	Designer:
-	Developer:
+	Developed by:
+	Site:
 	Twitter:
-	From:
+	GitHub:
+	Location:
 		
 /* SITE */
 
+	Last update: YYYY/MM/DD
 	Language: English
 	Doctype: HTML5
+	Standards: HTML, CSS, JavaScript
+	Components: Backbone, Underscore, Zepto.

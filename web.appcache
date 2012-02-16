@@ -1,8 +1,14 @@
 CACHE MANIFEST
-#version 1.0
+#version 0.1
 
-styles.css
-main.js
+index.html
+css/styles.css
+js/utils/tap.js
+js/libs/zepto/zepto-min.js
+js/libs/underscore/underscore-min.js
+js/libs/backbone/backbone-min.js
+js/utils/backbone.localStorage-min.js
+js/main.js
 
 NETWORK:
 *
